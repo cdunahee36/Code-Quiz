@@ -4,6 +4,8 @@ var javaQuestions = ["What are the components of conditionals in Javascript?",
 "What year was the movie Titanic released?", "Who was spiderman in the origional spiderman movie?"];
 
 
+var startButton = document.querySelector("button");
+
 
 
 
