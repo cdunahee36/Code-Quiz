@@ -11,7 +11,7 @@
 var start = document.querySelector('.Start');
 var Quiz = document.querySelector('.questions');
 
-Quiz.append(questions);
+
 
 
 
@@ -54,9 +54,16 @@ function startQuiz() {
    questions.forEach(
       (currentQuestion, questionNumber) => {
          const answer = [];
-      }
 
-   )
+   output.push(
+      currentQuestion.title,
+      choices.join('')
+   );
+
+ }
+   );
+
+   Quiz.innerHTML = output.join('');
 }
 
 
