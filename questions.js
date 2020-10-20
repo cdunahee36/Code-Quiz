@@ -37,6 +37,11 @@ const questions = [{
    answer: "2016"
 }];
 
+window.addEventListener("load", startQuiz, false);
+
+function startQuiz() {
+   console.log("Start QUiz")
+}
 
 
 

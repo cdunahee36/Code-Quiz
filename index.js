@@ -6,3 +6,7 @@
    Create a high scores page for the end
    Make a storage log for the initials and high score
 */
+
+//Variable for the start page
+var startButton = document.querySelector('.Start');
+
