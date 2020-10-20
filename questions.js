@@ -7,14 +7,7 @@
    Make a storage log for the initials and high score
 */
 
-
-var start = document.querySelector('.Start');
-var Quiz = document.querySelector('.questions');
-
-
-
-
-
+var QuestionSet = document.querySelector('.questions');
 
 //List of questions for the quiz
 
@@ -44,9 +37,17 @@ const questions = [{
    answer: "2016"
 }];
 
-//Creating event listener for the start button to begin the quiz
 
-start.addEventListener('click', startQuiz)
+
+
+
+
+
+
+
+
+
+
 
 
 
