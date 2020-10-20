@@ -48,23 +48,7 @@ const questions = [{
 
 start.addEventListener('click', startQuiz)
 
-function startQuiz() {
-   const output = [];
 
-   questions.forEach(
-      (currentQuestion, questionNumber) => {
-         const answer = [];
-
-   output.push(
-      currentQuestion.title,
-      choices.join('')
-   );
-
- }
-   );
-
-   Quiz.innerHTML = output.join('');
-}
 
 
 
