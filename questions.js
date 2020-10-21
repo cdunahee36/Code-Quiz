@@ -6,8 +6,10 @@
    Create a high scores page for the end
    Make a storage log for the initials and high score
 */
+var questionText = document.getElementById("questionText");
+var choices = document.querySelector('.choices');
+var currentQuestionIndex = 0;
 
-var QuestionSet = document.querySelector('.questions');
 
 //List of questions for the quiz
 
@@ -37,12 +39,66 @@ const questions = [{
    answer: "2016"
 }];
 
-window.addEventListener("load", startQuiz, false);
 
-function startQuiz() {
-   console.log("Start QUiz")
+
+
+function generatedChoicesList() {
+   console.log("Testing");
+   var qList = document.createElement('ul');
+   var currentQuestion = questions[currentQuestionIndex];
+   console.log("testing");
+
+   for (var i = 0; i < currentQuestion.choices.length; i++) {
+       
+       var lChoices = document.createElement('li');
+       var choiceText = currentQuestion.choices[i];
+       var button = document.createElement("button");
+       button.textContent = currentQuestion.choices[i];
+       console.log("adding choie " + choiceText);
+       button.addEventListener("click", function() {
+         console.log(button.textContent);
+         moveOn();
+         attemptAnswer(button.textContent);
+       }, false);
+       lChoices.appendChild(button);
+       qList.appendChild(lChoices);
+   }
+
+   // Finally, return the constructed list:
+   return qList;
 }
 
+
+function moveOn() {
+   currentQuestionIndex++;
+   refreshScreen();
+}
+
+
+
+function attemptAnswer(answerString) {
+   console.log("Selected " + answerString);
+
+}
+
+function refreshScreen() {
+   if (currentQuestionIndex <= questions.length - 1) {
+      questionText.textContent = questions[currentQuestionIndex].title;
+   
+   if (choices.children.length > 0) {
+      choices.removeChild(choices.children[0]);
+      }
+   
+      choices.appendChild(generatedChoicesList());
+   } else {
+      console.log("NO MORE");
+   }
+   
+   
+   
+}
+
+refreshScreen();
 
 
 
