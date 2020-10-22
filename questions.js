@@ -11,6 +11,7 @@ var choices = document.querySelector('.choices');
 var timeEl = document.querySelector('.time');
 var currentQuestionIndex = 0;
 
+
 setTime();
 //List of questions for the quiz
 
@@ -43,28 +44,28 @@ const questions = [{
 
 
 function generatedChoicesList() {
-   console.log("Testing");
-   var qList = document.createElement('ul');
-   var currentQuestion = questions[currentQuestionIndex];
-   console.log("testing");
+   function addChoice(choice) {
+      var lChoices = document.createElement('li');
+      var choiceText = choice;
+      var button = document.createElement("button");
+      button.textContent = choiceText;
+      button.className = "choice-button";
+      console.log("adding choie " + choiceText);
 
-   for (var i = 0; i < currentQuestion.choices.length; i++) {
-       
-       var lChoices = document.createElement('li');
-       var choiceText = currentQuestion.choices[i];
-       var button = document.createElement("button");
-       button.textContent = currentQuestion.choices[i];
-       console.log("adding choie " + choiceText);
+      button.addEventListener("click", function() {
+        attemptAnswer(button.textContent);
+      }, true);
 
-       button.addEventListener("click", function() {
-         console.log(button.textContent);
-         moveOn();
-         attemptAnswer(button.textContent);
-       }, false);
-
-       lChoices.appendChild(button);
-       qList.appendChild(lChoices);
+      lChoices.appendChild(button);
+      qList.appendChild(lChoices);
    }
+
+   var qList = document.createElement('ul');
+   qList.style = "list-style: none; spacing: 10px;";
+
+   var currentQuestion = questions[currentQuestionIndex];
+
+   currentQuestion.choices.forEach(addChoice);
 
    // Finally, return the constructed list:
    return qList;
@@ -93,7 +94,16 @@ function setTime() {
 
 
 function attemptAnswer(answerString) {
-   console.log("Selected " + answerString);
+   var currentQuestion = questions[currentQuestionIndex];
+   var answerTag = document.querySelector('.wrong-right');
+   
+   if (currentQuestion.answer === answerString) {
+      answerTag.textContent = "Correct";
+   } else {
+      answerTag.textContent = "Wrong";
+   }
+
+   moveOn();
 }
 
 function refreshScreen() {
