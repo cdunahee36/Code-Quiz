@@ -27,7 +27,7 @@ const questions = [{
 },
 {
    title: "What does the append function do in javascript?",
-   choices: ["removes valuse","adds values","subtracts values","multipys values"],
+   choices: ["removes values","adds values","subtracts values","multipys values"],
    answer: "adds values"
 },
 {
@@ -64,10 +64,10 @@ function generatedChoicesList() {
    qList.style = "list-style: none; spacing: 10px;";
 
    var currentQuestion = questions[currentQuestionIndex];
-
    currentQuestion.choices.forEach(addChoice);
 
-   // Finally, return the constructed list:
+   // Returns reconstructed list
+   
    return qList;
 }
 
@@ -79,6 +79,7 @@ function moveOn() {
 
 var secondsLeft = 60;
 
+
 function setTime() {
    var timerInterval = setInterval(function() {
      secondsLeft--;
@@ -86,12 +87,15 @@ function setTime() {
  
      if(secondsLeft === 0) {
        clearInterval(timerInterval);
+       highRedirect()
      }
  
    }, 1000);
  }
 
-
+ function highRedirect() {
+   window.location.href = "highscores.html";
+ }
 
 function attemptAnswer(answerString) {
    var currentQuestion = questions[currentQuestionIndex];
@@ -99,14 +103,17 @@ function attemptAnswer(answerString) {
    
    if (currentQuestion.answer === answerString) {
       answerTag.textContent = "Correct";
+      
    } else {
       answerTag.textContent = "Wrong";
+      secondsLeft.textContent = secondsLeft -= 10;
    }
 
    moveOn();
 }
 
 function refreshScreen() {
+
    if (currentQuestionIndex <= questions.length - 1) {
       questionText.textContent = questions[currentQuestionIndex].title;
    
@@ -116,10 +123,8 @@ function refreshScreen() {
    
       choices.appendChild(generatedChoicesList());
    } else {
-      console.log("NO MORE");
+      window.location.href = "highscores.html";
    }
-   
-   
    
 }
 
