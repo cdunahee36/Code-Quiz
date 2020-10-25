@@ -13,8 +13,6 @@ var questionText = document.getElementById("questionText");
 var choices = document.querySelector('.choices');
 var timeEl = document.querySelector('.time');
 var currentQuestionIndex = 0;
-var score = 0;
-var highscore = 0;
 
 setTime();
 
@@ -142,6 +140,10 @@ function refreshScreen() {
    }
    
 }
+
+// Sets final score
+
+localStorage.setItem("final-score", secondsLeft);
 
 refreshScreen();
 
