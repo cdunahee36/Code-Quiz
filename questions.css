@@ -23,12 +23,16 @@
     text-align: center;
 }
 
+/*Formats the text buttons to the left*/
+
 .choices {
     display: flex;
     align-items: left;
     width: 200px;
     
 }
+
+/*Styles the questions*/
 
 #questionText {
     font-size: 20px;

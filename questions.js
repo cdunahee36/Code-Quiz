@@ -6,13 +6,18 @@
    Create a high scores page for the end
    Make a storage log for the initials and high score
 */
+
+//These set all the variables for the questions to display
+
 var questionText = document.getElementById("questionText");
 var choices = document.querySelector('.choices');
 var timeEl = document.querySelector('.time');
 var currentQuestionIndex = 0;
-
+var score = 0;
+var highscore = 0;
 
 setTime();
+
 //List of questions for the quiz
 
 const questions = [{
@@ -41,16 +46,16 @@ const questions = [{
    answer: "2016"
 }];
 
-
+//This function creates a list and puts the array questions into it
 
 function generatedChoicesList() {
    function addChoice(choice) {
       var lChoices = document.createElement('li');
       var choiceText = choice;
       var button = document.createElement("button");
+
       button.textContent = choiceText;
       button.className = "choice-button";
-      console.log("adding choie " + choiceText);
 
       button.addEventListener("click", function() {
         attemptAnswer(button.textContent);
@@ -71,14 +76,18 @@ function generatedChoicesList() {
    return qList;
 }
 
+//This function allows the buttons to continue through the quiz
 
 function moveOn() {
    currentQuestionIndex++;
    refreshScreen();
 }
 
+//Sets time in seconds for the timer
+
 var secondsLeft = 60;
 
+//Timer for the quiz
 
 function setTime() {
    var timerInterval = setInterval(function() {
@@ -93,24 +102,30 @@ function setTime() {
    }, 1000);
  }
 
+//This function redirects you to the score page
+
  function highRedirect() {
    window.location.href = "highscores.html";
  }
+
+//This function allows the quiz to tell the user whether they are right or wrong
 
 function attemptAnswer(answerString) {
    var currentQuestion = questions[currentQuestionIndex];
    var answerTag = document.querySelector('.wrong-right');
    
    if (currentQuestion.answer === answerString) {
-      answerTag.textContent = "Correct";
+      answerTag.textContent = "Correct!";
       
    } else {
-      answerTag.textContent = "Wrong";
+      answerTag.textContent = "Wrong!";
       secondsLeft.textContent = secondsLeft -= 10;
    }
 
    moveOn();
 }
+
+//This function removes the current index from display and puts new one and also pushes the user to the highscore screen
 
 function refreshScreen() {
 
