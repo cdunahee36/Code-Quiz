@@ -11,4 +11,4 @@
 
 ## How to Install
 
-* The user does not need to install the application. The application is online and not installable. The user just needs to click this link :
+* The user does not need to install the application. The application is online and not installable. The user just needs to click this link : https://cdunahee36.github.io/Code-Quiz/
